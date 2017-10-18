@@ -15,9 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('articles','ArticlesController@index');
-Route::get('articles/create','ArticlesController@create');
+//Route::get('articles','ArticlesController@index');
+//Route::get('articles/create','ArticlesController@create');
+//
+//Route::get('articles/{id}','ArticlesController@show');
+//
+//Route::post('articles','ArticlesController@store');
 
-Route::get('articles/{id}','ArticlesController@show');
+Route::resource('articles','ArticlesController'); //ресурс групирует маршруты для articles / php artisan route:list
 
-Route::post('articles','ArticlesController@store');
+//Route::controller([
+//    'auth'=>'Auth\RegisterController'
+////    'password'=>'Auth\PasswordController'
+//]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
